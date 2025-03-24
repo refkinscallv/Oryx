@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import { Response } from 'express';
 import path from 'path';
 import { URLProperties } from '../types/Core/Common';
+import Logger from './Logger';
 
 /** packacges init */
 dotenv.config();
@@ -112,9 +113,9 @@ export default class Common {
         const repository = await repo.init();
 
         if (!data.length) {
-            // Logger.warning(
-            //     `No data provided for ${entity.name}, seeding skipped`,
-            // );
+            Logger.warn(
+                `No data provided for ${entity.name}, seeding skipped`,
+            );
             return;
         }
 
@@ -128,8 +129,8 @@ export default class Common {
             .orUpdate({ conflictTarget: allColumns, overwrite: allColumns })
             .execute();
 
-        // Logger.info(
-        //     `Seeder for ${entity.name} executed successfully with auto-update`,
-        // );
+        Logger.info(
+            `Seeder for ${entity.name} executed successfully with auto-update`,
+        );
     }
 }

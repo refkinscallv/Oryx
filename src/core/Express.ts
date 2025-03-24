@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import cookieParser from 'cookie-parser';
 import Routes from './Routes';
 import '../app/routes/Regist';
+import HttpMiddlewares from '../app/http/middlewares/Regist';
 
 export default class OryxExpress {
     public static express: Express = express();
@@ -16,6 +17,9 @@ export default class OryxExpress {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: true }));
         this.express.use(cookieParser());
+
+        /** custom global middlewares */
+        HttpMiddlewares.register(this.express);
     }
 
     private static routes() {
