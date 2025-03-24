@@ -17,7 +17,7 @@ export default class Logger {
                 fs.mkdirSync(levelDir, { recursive: true });
         });
 
-        Logger.cleanEmptyLogs();
+        // Logger.cleanEmptyLogs();
     }
 
     private static getLogFile(level: string): string {
@@ -63,7 +63,7 @@ export default class Logger {
         Logger.log('warn', ...args);
     }
 
-    private static cleanEmptyLogs() {
+    public static cleanEmptyLogs() {
         Logger.logLevels.forEach((level) => {
             const levelDir = path.join(Logger.logDir, level);
             fs.readdirSync(levelDir).forEach((file) => {
