@@ -1,6 +1,3 @@
-Here's your `README.md` for Oryx:
-
-```markdown
 # Oryx
 
 Oryx is a lightweight, modular, and scalable TypeScript-based backend framework.  
@@ -123,7 +120,6 @@ Oryx is open-source and available under the [MIT License](LICENSE).
 ---
 
 Created by **Refkinscallv** 🚀
-```
 
 This `README.md` includes:
 - Project description
