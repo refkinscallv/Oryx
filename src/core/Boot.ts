@@ -2,16 +2,32 @@ import OryxExpress from './Express';
 import OryxServer from './Server';
 import OryxRedis from './Redis';
 import Common from './Common';
-import '../app/config/Database';
+import { initializeDatabase } from '../app/config/Database';
+import runSeeders from '../app/database/seeders/Regist';
 
 export default class OryxBoot {
     public static start() {
         (async () => {
-            if (Common.env('REDIS_STATUS') === "on") {
+            /** Initialize the database connection before starting the application */
+            await initializeDatabase();
+
+            /** Initialize Redis if the REDIS_STATUS environment variable is set to "on" */
+            if (Common.env('REDIS_STATUS') === 'on') {
                 OryxRedis.init();
             }
-            OryxExpress.init();
-            OryxServer.init();
+
+            /** Execute database seeders if DB_SEED is enabled in the environment */
+            if (Common.env('DB_SEED', false)) {
+                await runSeeders();
+            }
+
+            setTimeout(() => {
+                /** Configure and initialize Express, including middlewares and routes */
+                OryxExpress.init();
+
+                /** Start the HTTP server to handle incoming requests */
+                OryxServer.init();
+            }, 100);
         })();
     }
 }

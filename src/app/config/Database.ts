@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import Logger from '../../core/Logger';
 import Common from '../../core/Common';
+import runSeeders from '../database/seeders/Regist';
 
 const databaseType = Common.env<string>('DB_DIALECT', 'mysql');
 
@@ -10,7 +11,7 @@ const baseConfig = {
             ? `${Common.env('DB_ENTITY_DEV', 'src/app/database/entities/')}*.ts`
             : `${Common.env('DB_ENTITY_PROD', 'dist/app/database/entities/')}*.js`,
     ],
-    synchronize: Common.env<boolean>('DB_SEED', false),
+    synchronize: Common.env<boolean>('DB_SYNC', false),
     logging: Common.env<boolean>('DB_LOGGING', false),
     charset: Common.env<string>('DB_CHARSET', 'utf8mb4_general_ci'),
 };
@@ -25,7 +26,7 @@ const dbConfigs: Record<string, any> = {
         database: Common.env<string>('DB_NAME', ''),
         ssl: Common.env<boolean>('DB_SSL', false)
             ? { rejectUnauthorized: false }
-            : false, 
+            : false,
     },
     mysql: {
         type: 'mysql',
@@ -59,8 +60,11 @@ export const AppDataSource = new DataSource({
     ...baseConfig,
 });
 
-AppDataSource.initialize()
-    .then(() => Logger.info(`✅ Connected to ${databaseType} database!`))
-    .catch((error) =>
-        Logger.error(`❌ Database connection error: ${error.message}`),
-    );
+export async function initializeDatabase() {
+    try {
+        await AppDataSource.initialize();
+        Logger.info('Connected to database!');
+    } catch (error) {
+        Logger.error('Database connection failed:', error);
+    }
+}

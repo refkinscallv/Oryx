@@ -33,17 +33,17 @@ export default class Common {
 
     public static async handler<T>(
         callback: () => Promise<T>,
-        shouldThrow: boolean | ((error: unknown) => void) = false,
+        shouldThrow: boolean | ((error: any) => void) = false,
     ): Promise<T> {
         try {
             return await callback();
-        } catch (error) {
+        } catch (error: any) {
             if (typeof shouldThrow === 'function') {
                 shouldThrow(error);
             } else if (shouldThrow) {
                 throw error;
             }
-            return this.rawJson(false, 500, 'Unexpected error', null) as T;
+            return this.rawJson(false, 500, error, null) as T;
         }
     }
 
@@ -110,12 +110,10 @@ export default class Common {
         entity: any;
         data: any[];
     }) {
-        const repository = await repo.init();
+        const repository = await repo.entity;
 
         if (!data.length) {
-            Logger.warn(
-                `No data provided for ${entity.name}, seeding skipped`,
-            );
+            Logger.warn(`No data provided for ${entity.name}, seeding skipped`);
             return;
         }
 
@@ -130,7 +128,7 @@ export default class Common {
             .execute();
 
         Logger.info(
-            `Seeder for ${entity.name} executed successfully with auto-update`,
+            `Seeder for '${entity.name}' executed successfully. Records were created and existing data was automatically updated.`,
         );
     }
 }

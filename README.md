@@ -117,6 +117,10 @@ JWT_SECRET=your_jwt_secret
 
 Oryx is open-source and available under the [MIT License](LICENSE).
 
+## Sample Postman Collection
+
+Visit for [Test results with postman](https://www.postman.com/winter-astronaut-781375/workspace/oryx-sample/collection/38443879-feb5ef9b-c883-408e-aff4-93663f0b9c1c?action=share&creator=38443879)
+
 ---
 
 Created by **Refkinscallv** 🚀

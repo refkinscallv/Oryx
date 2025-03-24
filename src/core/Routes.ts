@@ -27,10 +27,6 @@ export default class Routes {
             handler,
             middlewares: [...this.groupMiddlewares, ...middlewares],
         });
-
-        Logger.info(
-            `[ROUTE] ${methodArray.join(', ').toUpperCase()} -> ${fullPath}`,
-        );
     }
 
     static get(
@@ -86,7 +82,7 @@ export default class Routes {
     static group(
         prefix: string,
         callback: () => void,
-        middlewares: RoutesMiddleware[],
+        middlewares: RoutesMiddleware[] = [],
     ) {
         const previousPrefix = this.prefix;
         const previousMiddlewares = this.groupMiddlewares;
