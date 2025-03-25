@@ -17,7 +17,7 @@ export default class OryxBoot {
             }
 
             /** Execute database seeders if DB_SEED is enabled in the environment */
-            if (Common.env('DB_SEED', false)) {
+            if (Common.env<string>('DB_SEED', 'off') === 'on') {
                 await runSeeders();
             }
 

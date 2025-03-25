@@ -1,7 +1,6 @@
 import { DataSource } from 'typeorm';
 import Logger from '../../core/Logger';
 import Common from '../../core/Common';
-import runSeeders from '../database/seeders/Regist';
 
 const databaseType = Common.env<string>('DB_DIALECT', 'mysql');
 
@@ -11,8 +10,8 @@ const baseConfig = {
             ? `${Common.env('DB_ENTITY_DEV', 'src/app/database/entities/')}*.ts`
             : `${Common.env('DB_ENTITY_PROD', 'dist/app/database/entities/')}*.js`,
     ],
-    synchronize: Common.env<boolean>('DB_SYNC', false),
-    logging: Common.env<boolean>('DB_LOGGING', false),
+    synchronize: Common.env<string>('DB_SYNC', 'off') === 'on',
+    logging: Common.env<string>('DB_LOGGING', 'off') === 'on',
     charset: Common.env<string>('DB_CHARSET', 'utf8mb4_general_ci'),
 };
 

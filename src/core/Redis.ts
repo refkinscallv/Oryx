@@ -9,11 +9,21 @@ export default class OryxRedis {
 
     public static init(): void {
         if (!this.client) {
+            const useTLS = Common.env<string>('REDIS_TLS', 'off') === 'on';
+            const retryDelay = Number(Common.env('REDIS_RETRY_DELAY', '2000'));
+
             this.client = new Redis({
                 host: Common.env('REDIS_HOST', '127.0.0.1'),
                 port: Number(Common.env('REDIS_PORT', '6379')),
                 password: Common.env('REDIS_PASSWORD', undefined),
-                retryStrategy: (times) => Math.min(times * 50, 2000),
+                db: Number(Common.env('REDIS_DB', '0')),
+                retryStrategy: (times) => Math.min(times * 50, retryDelay),
+                keyPrefix: Common.env('REDIS_PREFIX', ''), // Prefix untuk key Redis
+                ...(useTLS ? { tls: {} } : {}), // Menambahkan TLS jika diaktifkan
+            });
+
+            this.client.on('connect', () => {
+                Logger.info('Connected to Redis successfully.');
             });
 
             this.client.on('error', (err) => {
@@ -70,11 +80,15 @@ export default class OryxRedis {
         callback: (message: any) => void,
     ): Promise<void> {
         try {
+            const useTLS = Common.env<string>('REDIS_TLS', 'off') === 'on';
             const subscriber = new Redis({
                 host: Common.env('REDIS_HOST', '127.0.0.1'),
                 port: Number(Common.env('REDIS_PORT', '6379')),
                 password: Common.env('REDIS_PASSWORD', undefined),
+                db: Number(Common.env('REDIS_DB', '0')),
+                ...(useTLS ? { tls: {} } : {}), // TLS untuk subscriber juga
             });
+
             subscriber.subscribe(channel);
             subscriber.on('message', (chan, msg) => {
                 if (chan === channel) {
