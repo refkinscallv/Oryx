@@ -1,6 +1,6 @@
-import Common from '../../../core/Common';
-import UserEntity from '../entities/User.entity';
-import UserRepository from '../repositories/User.repository';
+import Common from '@core/Common';
+import UserEntity from '@app/database/entities/User.entity';
+import UserRepository from '@app/database/repositories/User.repository';
 import bcrypt from 'bcrypt';
 
 export default async function UserSeeder() {

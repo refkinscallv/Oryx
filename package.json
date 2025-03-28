@@ -16,8 +16,8 @@
         "tsc-init": "npx tsc --init",
         "eslint-init": "npx eslint --init",
         "build": "npx tsc",
-        "start": "node dist/main.js",
-        "dev": "nodemon --exec ts-node src/main.ts",
+        "start": "node -r module-alias/register dist/main.js",
+        "dev": "nodemon --require module-alias/register --exec ts-node src/main.ts",
         "lint": "eslint . --ext .ts,.js",
         "lint-fix": "eslint . --ext .ts,.js --fix",
         "format": "prettier --ignore-path .prettierignore --write src/**/*.ts",
@@ -33,6 +33,7 @@
         "ioredis": "^5.6.0",
         "jsonwebtoken": "^9.0.2",
         "lodash": "^4.17.21",
+        "module-alias": "^2.2.3",
         "mysql2": "^3.14.0",
         "redis": "^4.7.0",
         "reflect-metadata": "^0.2.2",
@@ -61,5 +62,10 @@
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2",
         "typescript-eslint": "^8.27.0"
+    },
+    "_moduleAliases": {
+        "@core": "./dist/core",
+        "@app": "./dist/app",
+        "@type": "./dist/types"
     }
 }

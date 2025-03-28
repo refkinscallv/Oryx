@@ -1,6 +1,6 @@
 import Redis from 'ioredis';
-import Common from './Common';
-import Logger from './Logger';
+import Common from '@core/Common';
+import Logger from '@core/Logger';
 
 export default class OryxRedis {
     private static client: Redis;

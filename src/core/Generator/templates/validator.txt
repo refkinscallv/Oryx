@@ -1,4 +1,4 @@
-import Validator from '../../../core/Validator';
+import Validator from '@core/Validator';
 
 export default class UserValidation {
     private static validator: Validator = new Validator();

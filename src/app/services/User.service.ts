@@ -1,7 +1,7 @@
-import UserRepository from '../database/repositories/User.repository';
-import Common from '../../core/Common';
+import UserRepository from '@app/database/repositories/User.repository';
+import Common from '@core/Common';
 import { Request } from 'express';
-import UserValidation from '../http/validators/User.validator';
+import UserValidation from '@app/http/validators/User.validator';
 import bcrypt from 'bcrypt';
 
 export default class UserService {

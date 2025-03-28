@@ -1,5 +1,5 @@
 import { Repository, ObjectLiteral, SelectQueryBuilder } from 'typeorm';
-import { PaginationParams, PaginationResult } from '../types/Core/Paginate';
+import { PaginationParams, PaginationResult } from '@type/Core/Paginate';
 
 export default class Paginate {
     public static async make<T extends ObjectLiteral>(

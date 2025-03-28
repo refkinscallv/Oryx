@@ -1,11 +1,11 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import Logger from './Logger';
+import Logger from '@core/Logger';
 import {
     RoutesMethod,
     RoutesMiddleware,
     RouteHandler,
     RouteDefinition,
-} from '../types/Core/Routes';
+} from '@type/Core/Routes';
 
 export default class Routes {
     private static routes: RouteDefinition[] = [];

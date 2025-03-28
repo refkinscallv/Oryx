@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import Common from '../../../core/Common';
+import Common from '@core/Common';
 
 export default class {{Name}}Middleware {
     public static async handle(
