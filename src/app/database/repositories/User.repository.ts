@@ -9,8 +9,7 @@ import {
 import { isObject, isString, isNumber } from 'lodash';
 
 export default class UserRepository {
-    private static entity: Repository<UserEntity> =
-        AppDataSource.getRepository(UserEntity);
+    private static entity: Repository<UserEntity> = AppDataSource.getRepository(UserEntity);
 
     public static async pagination(
         params: PaginationParams<UserEntity>,

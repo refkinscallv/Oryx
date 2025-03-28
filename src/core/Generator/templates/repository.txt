@@ -1,0 +1,9 @@
+import { AppDataSource } from '../../config/Database';
+import { Repository } from "typeorm";
+// import {{Name}}Entity from "../entities/{{Name}}.entity";
+
+export default class {{Name}}Repository {
+    // required: write your entity here for initialized seeder
+    // sample : 
+    // private static entity: Repository<{{Name}}Entity> = AppDataSource.getRepository({{Name}}Entity);
+}

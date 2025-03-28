@@ -5,22 +5,28 @@ export default class Paginate {
     public static async make<T extends ObjectLiteral>(
         repo: Repository<T>,
         params: PaginationParams<T>,
-        relations: string[] = [],
     ): Promise<PaginationResult<T>> {
         const page = Number(params.page ?? 1);
         const limit = Number(params.limit ?? 10);
         const filter = params.filter;
         const offset = (page - 1) * limit;
+        const relations =
+            params.with
+                ?.split(',')
+                .map((rel) => rel.trim())
+                .filter(Boolean) || [];
 
         let queryBuilder: SelectQueryBuilder<T> =
             repo.createQueryBuilder('entity');
 
-        relations.forEach((relation) => {
-            queryBuilder = queryBuilder.leftJoinAndSelect(
-                `entity.${relation}`,
-                relation,
-            );
-        });
+        if (relations) {
+            relations.forEach((relation) => {
+                queryBuilder = queryBuilder.leftJoinAndSelect(
+                    `entity.${relation}`,
+                    relation,
+                );
+            });
+        }
 
         if (filter) {
             Object.entries(filter).forEach(([key, value]) => {

@@ -1,0 +1,10 @@
+import { Request, Response, NextFunction } from 'express';
+import Common from '../../../core/Common';
+
+export default class {{Name}}Controller {
+    public static async index(req: Request, res: Response, next: NextFunction) {
+        Common.handler(async () => {
+            return Common.resJson(res, true, 200, 'Success', {})
+        })
+    }
+}
