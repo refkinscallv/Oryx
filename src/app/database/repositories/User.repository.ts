@@ -1,11 +1,11 @@
-import { AppDataSource } from '../../config/Database';
+import { AppDataSource } from '@app/config/Database';
 import { Like, Repository, FindOptionsWhere, DeepPartial } from 'typeorm';
-import UserEntity from '../entities/User.entity';
-import Paginate from '../../../core/Paginate';
+import UserEntity from '@app/database/entities/User.entity';
+import Paginate from '@core/Paginate';
 import {
     PaginationParams,
     PaginationResult,
-} from '../../../types/Core/Paginate';
+} from '@type/Core/Paginate';
 import { isObject, isString, isNumber } from 'lodash';
 
 export default class UserRepository {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { expressCors } from '../../config/Cors';
-import Common from '../../../core/Common';
-import Logger from '../../../core/Logger';
+import { expressCors } from '@app/config/Cors';
+import Common from '@core/Common';
+import Logger from '@core/Logger';
 
 export default class CorsMiddleware {
     public static async handle(

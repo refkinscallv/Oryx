@@ -1,8 +1,8 @@
-import OryxServer from './Server';
-import { Server, Socket } from 'socket.io';
-import { socketWhitelist } from '../app/config/Cors';
-import Logger from '../core/Logger';
-import Common from './Common';
+import OryxServer from '@core/Server';
+import { Server } from 'socket.io';
+import { socketWhitelist } from '@app/config/Cors';
+import Logger from '@core/Logger';
+import Common from '@core/Common';
 
 export default class OryxSocket {
     public static io: Server = new Server(OryxServer.server, {

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import Common from './Common';
+import Common from '@core/Common';
 
 export default class Logger {
     private static logDir = path.join(__dirname, '../../logs');

@@ -1,4 +1,4 @@
-import Common from '../../core/Common';
+import Common from '@core/Common';
 
 export default class {{Name}}Service {
     public static async method() {

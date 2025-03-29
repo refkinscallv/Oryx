@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import { Response } from 'express';
 import path from 'path';
-import { URLProperties } from '../types/Core/Common';
-import Logger from './Logger';
+import { URLProperties } from '@type/Core/Common';
+import Logger from '@core/Logger';
 
 /** packacges init */
 dotenv.config();

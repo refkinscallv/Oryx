@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
-import Logger from '../../core/Logger';
-import Common from '../../core/Common';
+import Logger from '@core/Logger';
+import Common from '@core/Common';
 
 const databaseType = Common.env<string>('DB_DIALECT', 'mysql');
 

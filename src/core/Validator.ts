@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { ValidatorData, ValidationErrors } from '../types/Core/Validator';
+import { ValidatorData, ValidationErrors } from '@type/Core/Validator';
 
 export default class Validator {
     private fail: boolean = false;

@@ -1,10 +1,10 @@
-import Routes from "../../core/Routes";
+import Routes from "@core/Routes";
 
 /** middlewares */
-import CorsMiddleware from "../http/middlewares/Cors.middleware";
+import CorsMiddleware from "@app/http/middlewares/Cors.middleware";
 
 /** controllers */
-import UserController from "../http/controllers/User.controller";
+import UserController from '@app/http/controllers/User.controller';
 
 Routes.group('/api', () => {
     Routes.group('/user', () => {

@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 import cookieParser from 'cookie-parser';
-import Routes from './Routes';
-import '../app/routes/Regist';
-import HttpMiddlewares from '../app/http/middlewares/Regist';
+import Routes from '@core/Routes';
+import '@app/routes/Regist';
+import HttpMiddlewares from '@app/http/middlewares/Regist';
 
 export default class OryxExpress {
     public static express: Express = express();

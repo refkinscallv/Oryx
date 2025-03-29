@@ -1,7 +1,7 @@
 import http from 'http';
-import OryxExpress from './Express';
-import Common from './Common';
-import Logger from './Logger';
+import OryxExpress from '@core/Express';
+import Common from '@core/Common';
+import Logger from '@core/Logger';
 
 export default class OryxServer {
     public static server: http.Server = http.createServer(OryxExpress.express);

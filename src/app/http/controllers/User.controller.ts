@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import UserService from '../../services/User.service';
-import Common from '../../../core/Common';
+import UserService from '@app/services/User.service';
+import Common from '@core/Common';
 
 export default class UserController {
     public static async pagination(req: Request, res: Response) {
