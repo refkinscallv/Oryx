@@ -2,7 +2,7 @@ import OryxExpress from '@core/Express';
 import OryxServer from '@core/Server';
 import OryxRedis from '@core/Redis';
 import Common from '@core/Common';
-import { initializeDatabase } from '@app/config/Database';
+import { initializeDatabase } from '@app/config/database';
 import runSeeders from '@app/database/seeders/Regist';
 
 export default class OryxBoot {

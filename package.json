@@ -1,6 +1,6 @@
 {
     "name": "oryx",
-    "version": "1.5.0",
+    "version": "1.8.0",
     "description": "Oryx is a lightweight, modular, and scalable TypeScript-based backend framework",
     "keywords": [
         "micro-framework",
@@ -17,11 +17,11 @@
         "eslint-init": "npx eslint --init",
         "build": "npx tsc",
         "start": "node -r module-alias/register dist/main.js",
-        "dev": "nodemon --require module-alias/register --exec ts-node src/main.ts",
+        "dev": "nodemon -r tsconfig-paths/register --exec ts-node src/main.ts",
         "lint": "eslint . --ext .ts,.js",
         "lint-fix": "eslint . --ext .ts,.js --fix",
         "format": "prettier --ignore-path .prettierignore --write src/**/*.ts",
-        "make": "npx ts-node src/core/Generator/make.ts"
+        "make": "npx ts-node src/core/cli/make.ts"
     },
     "dependencies": {
         "axios": "^1.8.4",
@@ -60,6 +60,7 @@
         "nodemon": "^3.1.9",
         "prettier": "^3.5.3",
         "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
         "typescript": "^5.8.2",
         "typescript-eslint": "^8.27.0"
     },

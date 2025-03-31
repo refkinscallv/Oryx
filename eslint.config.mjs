@@ -30,6 +30,7 @@ export default [
             '@typescript-eslint/no-unused-vars': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-unused-expressions': 'warn',
+            '@typescript-eslint/no-cond-assign': 'off',
         },
     },
 ];

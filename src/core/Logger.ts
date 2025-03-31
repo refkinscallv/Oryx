@@ -5,7 +5,7 @@ import Common from '@core/Common';
 export default class Logger {
     private static logDir = path.join(__dirname, '../../logs');
     private static logLevels = ['info', 'error', 'warn'];
-    private static env = Common.env('APP_ENV', 'development');
+    public static env = Common.env('APP_ENV', 'development');
 
     public static init() {
         if (!fs.existsSync(Logger.logDir))
@@ -16,8 +16,6 @@ export default class Logger {
             if (!fs.existsSync(levelDir))
                 fs.mkdirSync(levelDir, { recursive: true });
         });
-
-        // Logger.cleanEmptyLogs();
     }
 
     private static getLogFile(level: string): string {
@@ -46,9 +44,14 @@ export default class Logger {
 
         fs.appendFileSync(logFile, logMessage, 'utf8');
 
-        if (Logger.env === 'development') {
+        if (Logger.env === 'development' || Logger.env === 'testing') {
             process[level === 'error' ? 'stderr' : 'stdout'].write(logMessage);
+        } else {
+            if (level === 'info') {
+                process.stdout.write(logMessage);
+            }
         }
+        
     }
 
     public static info(...args: any[]) {

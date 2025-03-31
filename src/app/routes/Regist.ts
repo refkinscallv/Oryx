@@ -1,2 +1,2 @@
 import '@app/routes/Web';
-import '@app/routes/Api'
+import '@app/routes/Api';

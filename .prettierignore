@@ -2,5 +2,5 @@
 node_modules/
 dist/
 logs/
-eslint.config.mjs  # ✅ Abaikan eslint.config.mjs
+eslint.config.mjs
 src/core/validator.ts

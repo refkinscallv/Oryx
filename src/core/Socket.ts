@@ -1,6 +1,6 @@
 import OryxServer from '@core/Server';
 import { Server } from 'socket.io';
-import { socketWhitelist } from '@app/config/Cors';
+import { socketWhitelist } from '@app/config/cors';
 import Logger from '@core/Logger';
 import Common from '@core/Common';
 

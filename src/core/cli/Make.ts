@@ -55,13 +55,13 @@ if (!fs.existsSync(baseDir)) {
 }
 
 const templatePath = path.resolve(
-    'src/core/Generator/templates',
+    'src/core/cli/templates',
     `${type}.txt`,
 );
 
 if (!fs.existsSync(templatePath)) {
     console.log(
-        `Error: Template '${type}.txt' not found in 'src/core/Generator/templates/' directory.`,
+        `Error: Template '${type}.txt' not found in 'src/core/cli/templates/' directory.`,
     );
     process.exit(1);
 }

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { expressCors } from '@app/config/Cors';
+import { expressCors } from '@app/config/cors';
 import Common from '@core/Common';
 import Logger from '@core/Logger';
 

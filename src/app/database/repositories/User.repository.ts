@@ -1,15 +1,13 @@
-import { AppDataSource } from '@app/config/Database';
+import { AppDataSource } from '@app/config/database';
 import { Like, Repository, FindOptionsWhere, DeepPartial } from 'typeorm';
 import UserEntity from '@app/database/entities/User.entity';
 import Paginate from '@core/Paginate';
-import {
-    PaginationParams,
-    PaginationResult,
-} from '@type/Core/Paginate';
+import { PaginationParams, PaginationResult } from '@type/Core/Paginate';
 import { isObject, isString, isNumber } from 'lodash';
 
 export default class UserRepository {
-    private static entity: Repository<UserEntity> = AppDataSource.getRepository(UserEntity);
+    private static entity: Repository<UserEntity> =
+        AppDataSource.getRepository(UserEntity);
 
     public static async pagination(
         params: PaginationParams<UserEntity>,
